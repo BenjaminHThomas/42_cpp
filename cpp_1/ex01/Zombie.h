@@ -6,14 +6,13 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:09:16 by bthomas           #+#    #+#             */
-/*   Updated: 2024/08/27 14:33:35 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/08/27 15:11:36 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
 #pragma once
-#ifndef ZOMBIE_H
 
 class Zombie {
 	public:
@@ -29,5 +28,3 @@ class Zombie {
 };
 
 Zombie*	zombieHorde(int N, std::string name);
-
-#endif // !ZOMBIE_H
