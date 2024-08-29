@@ -6,14 +6,16 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 13:51:46 by bthomas           #+#    #+#             */
-/*   Updated: 2024/08/28 13:52:20 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/08/29 10:08:19 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
 int	main(int argc, char **argv) {
-	(void)argc;
-	(void)argv;
+	if (argc != 2)
+		return (1);
+	Harl harl;
+	harl.complain(argv[1]);
 	return (0);
 }
