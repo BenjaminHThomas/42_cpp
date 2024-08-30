@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 16:16:50 by bthomas           #+#    #+#             */
-/*   Updated: 2024/08/29 18:05:08 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/08/30 10:22:16 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,23 @@ Fixed::Fixed() : fixed(0) {
 }
 
 Fixed::Fixed(int const n) {
-	int	lim = (1 << 23);
-	if (n > lim - 1 || n < -lim) { // need to think of a more elegant solution
+	std::cout << "int constructor called\n";
+	if (n > this->intLim - 1 || n < -this->intLim) { // outside scope, but I'd like to throw custom exception
 		std::cout << "int too big/small\n";
 		this->fixed = 0;
 		return ;
 	}
 	this->fixed = n << this->fractBits;
-	std::cout << "int constructor called\n";
 }
 
 Fixed::Fixed(float const f) {
-	if (f > (1 << 24) - 1 || f < -(1 << 24)) {
+	std::cout << "float constructor called\n";
+	if (f > this->floatLim - 1 || f < -this->floatLim) {
 		std::cout << "float too big/small\n";
 		this->fixed = 0;
 		return ;
 	}
-	this->fixed = f * 256;
-	std::cout << "float constructor called\n";
+	this->fixed = f * (1 << fractBits);
 }
 
 Fixed::~Fixed() {
@@ -53,6 +52,11 @@ Fixed& Fixed::operator=(const Fixed& other) {
 	return (*this);
 }
 
+std::ostream& operator<<(std::ostream& o, const Fixed &other) {
+	o << other.toFloat();
+	return (o);
+}
+
 int	Fixed::getRawBits() const {
 	std::cout << "getRawBits member function called\n";
 	return (this->fixed);
@@ -62,3 +66,12 @@ void	Fixed::setRawBits(int const raw) {
 	std::cout << "setRawBits member function called\n";
 	this->fixed = raw;
 }
+
+float Fixed::toFloat() const {
+	return ((float)this->fixed / (1 << this->fractBits));
+}
+
+int	Fixed::toInt() const {
+	return (this->fixed>>Fixed::fractBits);
+}
+
