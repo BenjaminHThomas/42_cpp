@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:30:41 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/02 14:08:15 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/02 20:44:45 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,12 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &other) {
 }
 
 void ClapTrap::attack(const std::string& target) {
+	if (energyPoints == 0) {
+		std::cout << name << " has insufficient energy to attack.\n";
+		return ;
+	}
 	std::cout << name << " attacks " << target << ", causing " << attackDamage << " points of damage!\n";
+	--this->energyPoints;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
@@ -60,6 +65,10 @@ void ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
+	if (energyPoints == 0) {
+		std::cout << name << " has insufficient energy to be repaired.\n";
+		return ;
+	}
 	if (hitPoints == 10) {
 		std::cout << name << " is already at full health, stupid.\n";
 		return ;
@@ -71,6 +80,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	else {
 		hitPoints += amount;
 	}
+	--energyPoints;
 	std::cout << name << " has been repaired for " << amount << " hitpoints. Leaving them at " << hitPoints << "hp.\n";
 }
 
