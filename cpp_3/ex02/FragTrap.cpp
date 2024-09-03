@@ -6,17 +6,17 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:39:49 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/03 16:53:56 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/03 18:59:02 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
-	hitPoints = 100;
-	maxHealth = 100;
-	energyPoints = 100;
-	attackDamage = 30;
+	this->hitPoints = 100;
+	this->maxHealth = 100;
+	this->energyPoints = 100;
+	this->attackDamage = 30;
 	std::cout << name << " the fragtrap, has been constructed.\n";
 }
 

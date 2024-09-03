@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:30:41 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/03 10:52:42 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/03 18:59:46 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void ClapTrap::attack(const std::string& target) {
 		std::cout << name << " has insufficient energy to attack.\n";
 		return ;
 	}
-	std::cout << name << " attacks " << target << ", causing " << attackDamage << " points of damage!\n";
+	std::cout << name << " attacks " << target << ", causing " << getAttackDamage() << " points of damage!\n";
 	--this->energyPoints;
 }
 
