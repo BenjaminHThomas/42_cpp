@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 08:52:43 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/03 10:16:55 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/03 11:00:04 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ class ScavTrap : public ClapTrap
 		ScavTrap(std::string name);
 		~ScavTrap();
 		void guardGate();
+		void attack(const std::string& target) override;
 };
