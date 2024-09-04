@@ -6,10 +6,11 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:59:57 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/04 17:00:39 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/04 17:16:49 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include "WrongAnimal.hpp"
 
 class WrongCat : public WrongAnimal
