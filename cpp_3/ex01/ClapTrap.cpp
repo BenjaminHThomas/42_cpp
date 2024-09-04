@@ -6,24 +6,25 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:30:41 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/03 10:52:42 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/04 12:30:35 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name) : hitPoints(10), energyPoints(10), attackDamage(0), maxHealth(10), name(name) {
+ClapTrap::ClapTrap(void) : hitPoints(10), maxHealth(10), energyPoints(10), attackDamage(0) {
 	std::cout << "Default constructor called.\n";
+}
+
+ClapTrap::ClapTrap(std::string name) : hitPoints(10), energyPoints(10), attackDamage(0) {
+	std::cout << "Constructor called.\n";
+	this->name = name;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other) {
 	std::cout << "Copy constructor called.\n";
 	if (this != &other) {
-		this->maxHealth = other.maxHealth;
-		this->hitPoints = other.hitPoints;
-		this->energyPoints = other.energyPoints;
-		this->attackDamage = other.attackDamage;
-		this->name = other.name;
+		*this = other;
 	}
 }
 
@@ -34,27 +35,27 @@ ClapTrap::~ClapTrap() {
 ClapTrap& ClapTrap::operator=(const ClapTrap &other) {
 	std::cout << "Assign operator constructor called.\n";
 	if (this != &other) {
-		this->maxHealth = other.maxHealth;
+		this->name = other.name;
 		this->hitPoints = other.hitPoints;
+		this->maxHealth = other.maxHealth;
 		this->energyPoints = other.energyPoints;
 		this->attackDamage = other.attackDamage;
-		this->name = other.name;
 	}
 	return (*this);
 }
 
 void ClapTrap::attack(const std::string& target) {
 	if (energyPoints == 0) {
-		std::cout << name << " has insufficient energy to attack.\n";
+		std::cout << getName() << " has insufficient energy to attack.\n";
 		return ;
 	}
-	std::cout << name << " attacks " << target << ", causing " << attackDamage << " points of damage!\n";
+	std::cout << getName() << " attacks " << target << ", causing " << attackDamage << " points of damage!\n";
 	--this->energyPoints;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
 	if (hitPoints == 0) {
-		std::cout << "Stop it, " << name << " is already dead.\n";
+		std::cout << "Stop it, " << getName() << " is already dead.\n";
 		return ;
 	}
 	if (hitPoints <= amount) {
@@ -64,19 +65,19 @@ void ClapTrap::takeDamage(unsigned int amount) {
 	else {
 		hitPoints -= amount;
 	}
-	std::cout << name << " was hit for " << amount << ". Leaving them at " << hitPoints << "hp.\n";
+	std::cout << getName() << " was hit for " << amount << ". Leaving them at " << hitPoints << "hp.\n";
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
 	if (energyPoints == 0) {
-		std::cout << name << " has insufficient energy to be repaired.\n";
+		std::cout << getName() << " has insufficient energy to be repaired.\n";
 		return ;
 	}
-	if (hitPoints == maxHealth) {
-		std::cout << name << " is already at full health, stupid.\n";
+	if (hitPoints == 10) {
+		std::cout << getName() << " is already at full health, stupid.\n";
 		return ;
 	}
-	if (hitPoints + amount >= maxHealth) {
+	if (hitPoints + amount > maxHealth) {
 		amount = maxHealth - hitPoints;
 		hitPoints = maxHealth;
 	}
@@ -84,17 +85,13 @@ void ClapTrap::beRepaired(unsigned int amount) {
 		hitPoints += amount;
 	}
 	--energyPoints;
-	std::cout << name << " has been repaired for " << amount << " hitpoints. Leaving them at " << hitPoints << "hp.\n";
+	std::cout << getName() << " has been repaired for " << amount << " hitpoints. Leaving them at " << hitPoints << "hp.\n";
 }
 
 const std::string ClapTrap::getName() {
-	return this->name;
+	return name.length()? name : "no_name";
 }
 
 unsigned int ClapTrap::getAttackDamage() {
 	return this->attackDamage;
-}
-
-std::string ClapTrap::getName() const {
-	return name;
 }

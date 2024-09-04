@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:36:51 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/03 16:55:20 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/04 12:42:07 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 int	main(void) {
 	FragTrap phil("Phil");
+	FragTrap phil2 = phil;
 
-	phil.attack("bob");
-	phil.takeDamage(95);
-	phil.beRepaired(120);
-	phil.highFivesGuys();
+	phil2.attack("bob");
+	phil2.takeDamage(95);
+	phil2.beRepaired(120);
+	phil2.highFivesGuys();
 }

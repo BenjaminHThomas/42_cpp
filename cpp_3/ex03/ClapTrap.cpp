@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:30:41 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/04 09:45:35 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/04 12:40:51 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ ClapTrap::ClapTrap(std::string name) : hitPoints(10), energyPoints(10), attackDa
 ClapTrap::ClapTrap(const ClapTrap& other) {
 	std::cout << "Copy constructor called.\n";
 	if (this != &other) {
-		*this = other;
+		this->name = other.name;
+		this->hitPoints = other.hitPoints;
+		this->maxHealth = other.maxHealth;
+		this->energyPoints = other.energyPoints;
+		this->attackDamage = other.attackDamage;
 	}
 }
 
@@ -34,7 +38,11 @@ ClapTrap::~ClapTrap() {
 ClapTrap& ClapTrap::operator=(const ClapTrap &other) {
 	std::cout << "Assign operator constructor called.\n";
 	if (this != &other) {
-		*this = other;
+		this->name = other.name;
+		this->hitPoints = other.hitPoints;
+		this->maxHealth = other.maxHealth;
+		this->energyPoints = other.energyPoints;
+		this->attackDamage = other.attackDamage;
 	}
 	return (*this);
 }

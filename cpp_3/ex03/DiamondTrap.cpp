@@ -6,13 +6,13 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:58:12 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/04 09:57:54 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/04 12:38:37 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void) : ClapTrap(), ScavTrap(), FragTrap(){
+DiamondTrap::DiamondTrap(void) : ScavTrap(), FragTrap(){
 	this->hitPoints = FragTrap::defaultHitPoints;
 	this->maxHealth = FragTrap::defaultHitPoints;
 	this->energyPoints = ScavTrap::defaultEnergyPoints;
@@ -30,11 +30,15 @@ DiamondTrap::DiamondTrap(std::string name) : ScavTrap(name), FragTrap(name){
 	std::cout << "DiamondTrap constructor called.\n";
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &other) : ScavTrap(other), FragTrap(other) {
+DiamondTrap::DiamondTrap(const DiamondTrap &other) {
 	std::cout << "DiamondTrap copy constructor called.\n";
 	if (this != &other) {
-		ClapTrap::name = other.name +  "_clap_name";;
-		*this = other;
+		ClapTrap::name = other.name +  "_clap_name";
+		this->name = other.name;
+		this->hitPoints = other.hitPoints;
+		this->maxHealth = other.maxHealth;
+		this->energyPoints = other.energyPoints;
+		this->attackDamage = other.attackDamage;
 	}
 }
 
