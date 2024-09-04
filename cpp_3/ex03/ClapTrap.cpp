@@ -6,11 +6,15 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:30:41 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/03 19:45:56 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/04 09:45:35 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap() : hitPoints(10), energyPoints(10), attackDamage(0), maxHealth(10) {
+	std::cout << "Default constructor called.\n";
+}
 
 ClapTrap::ClapTrap(std::string name) : hitPoints(10), energyPoints(10), attackDamage(0), maxHealth(10), name(name) {
 	std::cout << "Default constructor called.\n";
@@ -19,11 +23,7 @@ ClapTrap::ClapTrap(std::string name) : hitPoints(10), energyPoints(10), attackDa
 ClapTrap::ClapTrap(const ClapTrap& other) {
 	std::cout << "Copy constructor called.\n";
 	if (this != &other) {
-		this->maxHealth = other.maxHealth;
-		this->hitPoints = other.hitPoints;
-		this->energyPoints = other.energyPoints;
-		this->attackDamage = other.attackDamage;
-		this->name = other.name;
+		*this = other;
 	}
 }
 
@@ -34,11 +34,7 @@ ClapTrap::~ClapTrap() {
 ClapTrap& ClapTrap::operator=(const ClapTrap &other) {
 	std::cout << "Assign operator constructor called.\n";
 	if (this != &other) {
-		this->maxHealth = other.maxHealth;
-		this->hitPoints = other.hitPoints;
-		this->energyPoints = other.energyPoints;
-		this->attackDamage = other.attackDamage;
-		this->name = other.name;
+		*this = other;
 	}
 	return (*this);
 }
@@ -87,11 +83,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	std::cout << name << " has been repaired for " << amount << " hitpoints. Leaving them at " << hitPoints << "hp.\n";
 }
 
-const std::string ClapTrap::getName() {
-	return (this->name);
-}
-
-unsigned int ClapTrap::getAttackDamage() {
+unsigned int ClapTrap::getAttackDamage() const {
 	return (this->attackDamage);
 }
 
@@ -99,10 +91,10 @@ std::string ClapTrap::getName() const {
 	return (name);
 }
 
-unsigned int ClapTrap::getEnergyPoints() {
+unsigned int ClapTrap::getEnergyPoints() const {
 	return (this->energyPoints);
 }
 
-unsigned int ClapTrap::getHitPoints() {
+unsigned int ClapTrap::getHitPoints() const {
 	return (this->hitPoints);
 }

@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 08:52:43 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/03 19:48:28 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/04 09:56:46 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,16 @@ class ScavTrap : virtual public ClapTrap
 {
 	private:
 		//
+	protected:
+		static unsigned int const defaultHitPoints = 100;
+		static unsigned int const defaultEnergyPoints = 50;
+		static unsigned int const defaultAttackDamage = 20;
+		using ClapTrap::maxHealth;
+		using ClapTrap::energyPoints;
+		using ClapTrap::hitPoints;
+		using ClapTrap::attackDamage;
 	public:
+		ScavTrap(void);
 		ScavTrap(std::string name);
 		ScavTrap(const ScavTrap &other);
 		~ScavTrap();

@@ -6,33 +6,35 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:58:12 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/03 19:45:09 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/04 09:57:54 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string name) : 
-		ClapTrap(name + "_clap_name"), 
-		ScavTrap(name + "_clap_name"), 
-		FragTrap(name + "_clap_name") {
-	this->name = name;
-	this->hitPoints = FragTrap::getHitPoints();
-	this->maxHealth = FragTrap::getHitPoints();
-	this->energyPoints = ScavTrap::getEnergyPoints();
-	this->attackDamage = FragTrap::getAttackDamage();
+DiamondTrap::DiamondTrap(void) : ClapTrap(), ScavTrap(), FragTrap(){
+	this->hitPoints = FragTrap::defaultHitPoints;
+	this->maxHealth = FragTrap::defaultHitPoints;
+	this->energyPoints = ScavTrap::defaultEnergyPoints;
+	this->attackDamage = FragTrap::defaultAttackDamage;
 	std::cout << "DiamondTrap constructor called.\n";
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other), ScavTrap(other), FragTrap(other) {
+DiamondTrap::DiamondTrap(std::string name) : ScavTrap(name), FragTrap(name){
+	this->name = name;
+	ClapTrap::name = name + "_clap_name";
+	this->hitPoints = FragTrap::defaultHitPoints;
+	this->maxHealth = FragTrap::defaultHitPoints;
+	this->energyPoints = ScavTrap::defaultEnergyPoints;
+	this->attackDamage = FragTrap::defaultAttackDamage;
+	std::cout << "DiamondTrap constructor called.\n";
+}
+
+DiamondTrap::DiamondTrap(const DiamondTrap &other) : ScavTrap(other), FragTrap(other) {
 	std::cout << "DiamondTrap copy constructor called.\n";
 	if (this != &other) {
 		ClapTrap::name = other.name +  "_clap_name";;
-		this->name = other.name;
-		this->hitPoints = other.hitPoints;
-		this->maxHealth = other.maxHealth;
-		this->energyPoints = other.energyPoints;
-		this->attackDamage = other.attackDamage;
+		*this = other;
 	}
 }
 
