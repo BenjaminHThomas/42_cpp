@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:24:12 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/04 17:55:08 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/06 12:47:56 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int main() {
 	for (size_t i = 0; i < NUM_ANIMALS; ++i) {
 		delete all[i];
 	}
-	delete all;
-
+	delete [] all;
 	return 0;
 }

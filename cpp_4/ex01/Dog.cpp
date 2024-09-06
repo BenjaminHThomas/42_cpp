@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:41:45 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/04 17:57:17 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/06 12:48:13 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,4 @@ void Dog::makeSound() const {
 std::string Dog::getType() const {
 	return _type;
 }
+
