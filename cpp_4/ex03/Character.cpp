@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:57:14 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/08 16:47:51 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/08 16:55:06 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,10 @@ void Character::equip(AMateria *m) {
 		std::cout << _name << " can't equip more than 4 weapons!\n";
 		return ;
 	}
+	if (m == nullptr) {
+		std::cout << _name << " can't equip a null weapon!\n";
+		return ;
+	}
 	std::cout << _name << " equips " << m->getType() << " in slot " << _nbEquiped << "\n";
 	_inventory[_nbEquiped++] = m;
 }
@@ -84,6 +88,7 @@ void Character::unequip(int idx) {
 		std::cout << _name << " can't unequip no weapon!\n";
 		return ;
 	}
+	std::cout << _name << " unequips " << _inventory[idx]->getType() << " from slot " << idx << "\n";
 	_inventory[idx] = NULL;
 	--_nbEquiped;
 }
