@@ -6,11 +6,11 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 08:10:59 by bthomas           #+#    #+#             */
-/*   Updated: 2024/08/27 08:24:20 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/10 10:56:03 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.h"
+#include "Zombie.hpp"
 
 Zombie::Zombie(std::string name) {
 	this->name = name;

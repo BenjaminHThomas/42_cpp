@@ -6,13 +6,13 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 08:29:23 by bthomas           #+#    #+#             */
-/*   Updated: 2024/08/27 14:38:27 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/10 10:56:22 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.h"
-#include "sstream"
-#include "string"
+#include "Zombie.hpp"
+#include <sstream>
+#include <string>
 
 int	main(int ac, char **av) {
 	int	N;

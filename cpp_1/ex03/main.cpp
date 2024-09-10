@@ -6,12 +6,12 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:39:38 by bthomas           #+#    #+#             */
-/*   Updated: 2024/08/28 10:55:14 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/10 10:58:42 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.h"
-#include "HumanB.h"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
 int main() {
 	{

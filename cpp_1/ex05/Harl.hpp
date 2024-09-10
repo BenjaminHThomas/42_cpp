@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 13:51:16 by bthomas           #+#    #+#             */
-/*   Updated: 2024/08/29 10:06:54 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/10 11:06:26 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 class Harl
 {
 	private:
-		void debug();
-		void info();
-		void warning();
-		void error();
+		void debug(void);
+		void info(void);
+		void warning(void);
+		void error(void);
 	public:
 		Harl() {};
 		~Harl() {};

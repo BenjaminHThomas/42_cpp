@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.h                                           :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 15:27:55 by bthomas           #+#    #+#             */
-/*   Updated: 2024/08/28 10:58:02 by bthomas          ###   ########.fr       */
+/*   Created: 2024/08/27 15:09:29 by bthomas           #+#    #+#             */
+/*   Updated: 2024/09/10 10:58:29 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.h"
+#pragma once
 
-class HumanB
+#include "Weapon.hpp"
+
+class HumanA
 {
 	private:
 		std::string	name;
 		Weapon*		weaponType;
 	public:
-		HumanB(std::string name) : name(name) {};
-		~HumanB() {};
-		void	setWeapon(Weapon &weaponType);
+		HumanA(std::string name, Weapon &type) : name(name), weaponType(&type) {};
+		~HumanA() {};
 		void	attack();
 };
+
