@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:02:42 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/08 16:36:36 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/11 12:54:31 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class AMateria
 {
 	protected:
 		std::string _type;
+		bool _equipedStatus;
 	public:
 		AMateria(void);
 		AMateria(std::string const& type);
@@ -30,5 +31,8 @@ class AMateria
 		virtual void use(ICharacter& target) = 0;
 		virtual ~AMateria() {};
 		std::string getType() const;
+		void setEquiped();
+		void setUnequiped();
+		bool getEquipStatus() const;
 };
 

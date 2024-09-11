@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:24:12 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/06 13:26:20 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/11 11:37:41 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #define NUM_ANIMALS 8
 
 int main() {
-	//A_Animal* notAllowed = new A_Animal();
-	//notAllowed->makeSound();
+	// A_Animal* notAllowed = new A_Animal();
+	// notAllowed->makeSound();
 
 	Cat* allowed = new Cat();
 	std::cout << "\n";

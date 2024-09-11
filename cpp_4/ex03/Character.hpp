@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:42:21 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/08 15:10:50 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/11 11:39:15 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class Character : public virtual ICharacter
 		const static int _maxInv = 4;
 		AMateria** _inventory;
 		int _nbEquiped;
+		bool wpnEquiped(AMateria* m);
 	public:
 		Character(void);
 		Character(std::string name);

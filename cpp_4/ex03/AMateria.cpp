@@ -6,13 +6,14 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:18:08 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/08 16:44:35 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/11 12:54:37 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 
 AMateria::AMateria(void) {
+	_equipedStatus = false;
 }
 
 AMateria::AMateria(std::string const& type) : _type(type) {
@@ -30,4 +31,16 @@ AMateria & AMateria::operator=(AMateria const& rhs) {
 
 std::string AMateria::getType() const {
 	return _type;
+}
+
+void AMateria::setEquiped() {
+	_equipedStatus = true;
+}
+
+void AMateria::setUnequiped() {
+	_equipedStatus = false;
+}
+
+bool AMateria::getEquipStatus() const {
+	return _equipedStatus;
 }

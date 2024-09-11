@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:57:14 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/08 16:55:06 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/11 12:54:05 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,18 @@ std::string const& Character::getName() const {
 	return _name;
 }
 
+bool Character::wpnEquiped(AMateria *m) {
+	if (!_nbEquiped) {
+		return false;
+	}
+	for (size_t i = 0; i < _nbEquiped; ++i) {
+		if (_inventory[i] == m) {
+			return true;
+		}
+	}
+	return false;
+}
+
 void Character::equip(AMateria *m) {
 	if (_nbEquiped >= 4) {
 		std::cout << _name << " can't equip more than 4 weapons!\n";
@@ -79,8 +91,13 @@ void Character::equip(AMateria *m) {
 		std::cout << _name << " can't equip a null weapon!\n";
 		return ;
 	}
+	if (m->getEquipStatus()) {
+		std::cout << "This materia is already equiped.\n";
+		return ;
+	}
 	std::cout << _name << " equips " << m->getType() << " in slot " << _nbEquiped << "\n";
 	_inventory[_nbEquiped++] = m;
+	m->setEquiped();
 }
 
 void Character::unequip(int idx) {
@@ -89,6 +106,7 @@ void Character::unequip(int idx) {
 		return ;
 	}
 	std::cout << _name << " unequips " << _inventory[idx]->getType() << " from slot " << idx << "\n";
+	_inventory[idx]->setUnequiped();
 	_inventory[idx] = NULL;
 	--_nbEquiped;
 }
@@ -105,6 +123,7 @@ Character::~Character() {
 	for (int i = 0; i < _maxInv; ++i) {
 		if (_inventory[i] != NULL) {
 			delete _inventory[i];
+			_inventory[i] = NULL;
 		}
 	}
 	delete [] _inventory;
