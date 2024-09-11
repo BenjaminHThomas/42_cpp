@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 11:44:27 by bthomas           #+#    #+#             */
-/*   Updated: 2024/08/28 13:47:03 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/11 10:48:07 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	replaceStrs(std::string fname, std::string s1, std::string s2) {
 		replacement += "\n";
 	}
 	inFile.close();
-	std::ofstream outFile(fname);
+	std::ofstream outFile(fname + ".replace");
 	outFile << replacement;
 	outFile.close();
 }
