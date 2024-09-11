@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.h                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:13:57 by bthomas           #+#    #+#             */
-/*   Updated: 2024/08/27 15:30:28 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/11 10:43:58 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ class Weapon
 	public:
 		Weapon(std::string type = "hands") : type(type) {};
 		~Weapon() {};
-		std::string	getType();
+		const std::string& getType();
 		void	setType(std::string type);
 };

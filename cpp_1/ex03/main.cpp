@@ -6,12 +6,13 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:39:38 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/10 10:58:42 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/11 10:45:27 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
 #include "HumanB.hpp"
+#include <iostream>
 
 int main() {
 	{
@@ -30,5 +31,6 @@ int main() {
 		jim.attack();
 		club.setType("some other type of club");
 		jim.attack();
+		std::cout << "\n" << club.getType();
 	}
 }
