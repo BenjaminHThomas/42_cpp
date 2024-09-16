@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:39:38 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/11 10:45:27 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/13 11:09:28 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int main() {
 		bob.attack();
 		club.setType("some other type of club");
 		bob.attack();
+		std::cout << club.getType() << "\n\n";
 	}
 	{
 		Weapon	club = Weapon("crude spiked club");
@@ -31,6 +32,6 @@ int main() {
 		jim.attack();
 		club.setType("some other type of club");
 		jim.attack();
-		std::cout << "\n" << club.getType();
+		std::cout << club.getType() << "\n";
 	}
 }
