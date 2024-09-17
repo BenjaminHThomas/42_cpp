@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 13:16:24 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/17 14:21:21 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/17 14:22:53 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,5 @@ int main(void) {
 	} catch (std::exception& e) {
 		std::cout << e.what();
 	}
+	return 0;
 }

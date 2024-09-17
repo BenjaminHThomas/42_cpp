@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 17:24:53 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/17 14:11:51 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/17 17:54:00 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@
 #define MAX_GRADE 1
 #define MIN_GRADE 150
 
+
 class Bureaucrat
 {
 private:
-	const std::string _name;
+	std::string _name;
 	int	_grade;
 protected:
 public:
