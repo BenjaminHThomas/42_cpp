@@ -6,25 +6,45 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 17:25:36 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/16 17:40:09 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/17 14:16:57 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
+class Bureaucrat::GradeTooHighException : public std::exception {
+	public:
+		const char* what() const throw() {
+			return "Error: Grade too high.\n";
+		}
+};
+
+class Bureaucrat::GradeTooLowException : public std::exception {
+	public:
+		const char* what() const throw() {
+			return "Error: Grade too low.\n";
+		}
+};
+
+Bureaucrat::Bureaucrat() : _name("NoName"), _grade(150) {
+}
+
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
-	if (grade < 1 || grade > 150) {
-		std::cout << "Error: grade " << grade << " is invalid.\n";
-		_grade = 150;
+	if (grade < 1) {
+		throw Bureaucrat::GradeTooLowException();
 	}
+	else if (grade > 150) {
+		throw Bureaucrat::GradeTooHighException();
+	}
+	_grade = grade;
 	std::cout << "default bureaucrat constructor called.\n";
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other)
 {
 	if (this != &other) {
-		*this = other;
+		_grade = other.getGrade();
 	}
 	std::cout << "bureaucrat copy constructor called.\n";
 }
@@ -38,7 +58,7 @@ Bureaucrat & Bureaucrat::operator=(const Bureaucrat &other)
 {
 	if (this != &other)
 	{
-		*this = other;
+		_grade = other.getGrade();
 	}
 	return *this;
 }
@@ -52,17 +72,22 @@ const std::string Bureaucrat::getName() const {
 }
 
 void Bureaucrat::incrementGrade() {
-	if (this->_grade <= 1) {
-		std::cout << "Error: this guy is already the highest rank.\n";
-		return ;
+	if (this->_grade == 1) {
+		throw GradeTooHighException();
 	}
 	--_grade;
+	std::cout << _name << " has been promoted. Their grade is now " << _grade << "\n";
 }
 
 void Bureaucrat::decrementGrade() {
-	if (_grade >= 150) {
-		std::cout << "Error: this guys is already the lowest rank.\n";
-		return ;
+	if (_grade == 150) {
+		throw GradeTooLowException();
 	}
 	++_grade;
+	std::cout << _name << " has been demoted. Their grade is now " << _grade << "\n";
+}
+
+std::ostream& operator<<(std::ostream& o, const Bureaucrat& b) {
+	o << b.getName() << ", bureaucrat grade " << b.getGrade() << "\n";
+	return (o);
 }

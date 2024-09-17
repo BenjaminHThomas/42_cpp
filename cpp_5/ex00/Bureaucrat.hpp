@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 17:24:53 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/16 17:33:30 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/17 14:11:51 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ private:
 	int	_grade;
 protected:
 public:
+	Bureaucrat ();
 	Bureaucrat (std::string name, int grade);
 	Bureaucrat (const Bureaucrat &bureaucrat);
 	~Bureaucrat ();
@@ -34,6 +35,10 @@ public:
 	int getGrade() const;
 	void incrementGrade();
 	void decrementGrade();
+	class GradeTooHighException;
+	class GradeTooLowException;
 };
+
+std::ostream& operator<<(std::ostream& o, const Bureaucrat &b);
 
 #endif /* BUREAUCRAT_HPP */
