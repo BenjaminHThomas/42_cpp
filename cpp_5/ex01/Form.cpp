@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:23:40 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/17 17:52:59 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/18 10:25:18 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,14 @@ const int Form::getGradeToExec() const {
 
 std::ostream& operator<<(std::ostream& o, const Form &f) {
 	o << "[Form] Form " << f.getName() << ", needs grade " << f.getGradeToSign() << " to sign, "
-	<< "and grade " << f.getGradeToExec() << " to sign. Signed status: " << f.getStatus() << "\n";
+	<< "and grade " << f.getGradeToExec() << " to execute. Signed status: " << f.getStatus() << "\n";
 	return o;
 }
 
 void Form::beSigned(const Bureaucrat& b) {
 	if (_isSigned)
 	{
-		std::cout << "[Form] This form is already signed!\n";
+		std::cout << getName() << " is form is already signed!\n";
 		return ;
 	}
 	if (b.getGrade() > _gradeToSign) {
