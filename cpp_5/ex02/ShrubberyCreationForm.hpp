@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:03:07 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/17 20:24:12 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/18 10:34:43 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include "AForm.hpp"
+#include <fstream>
 
 class ShrubberyCreationForm : public AForm
 {
@@ -26,6 +27,7 @@ public:
 	ShrubberyCreationForm (const ShrubberyCreationForm &other);
 	~ShrubberyCreationForm ();
 	ShrubberyCreationForm & operator=(const ShrubberyCreationForm &other);
+	void execute(const Bureaucrat& b);
 };
 
 #endif /* SHRUBBERYCREATIONFORM_HPP */
