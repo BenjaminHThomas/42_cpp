@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:57:14 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/11 12:54:05 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 11:26:13 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ bool Character::wpnEquiped(AMateria *m) {
 	if (!_nbEquiped) {
 		return false;
 	}
-	for (size_t i = 0; i < _nbEquiped; ++i) {
+	for (int i = 0; i < _nbEquiped; ++i) {
 		if (_inventory[i] == m) {
 			return true;
 		}
@@ -87,7 +87,7 @@ void Character::equip(AMateria *m) {
 		std::cout << _name << " can't equip more than 4 weapons!\n";
 		return ;
 	}
-	if (m == nullptr) {
+	if (!m) {
 		std::cout << _name << " can't equip a null weapon!\n";
 		return ;
 	}

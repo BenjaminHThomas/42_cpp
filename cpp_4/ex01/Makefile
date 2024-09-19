@@ -6,7 +6,7 @@
 #    By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 15:18:17 by bthomas           #+#    #+#              #
-#    Updated: 2024/09/04 17:56:30 by bthomas          ###   ########.fr        #
+#    Updated: 2024/09/19 11:34:43 by bthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,9 @@ SRC			= main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.c
 OBJS		= $(SRC:%.cpp=%.o)
 CFLAGS		= -g3 -Wall -Werror -Wextra -std=c++98
 COMPILER	= c++
+
+%.o : %.cpp
+	$(COMPILER) $(CFLAGS) -I. -c $< -o $@ 
 
 $(NAME): $(OBJS)
 	$(COMPILER) $(CFLAGS) -I. $(OBJS) -o $(NAME)

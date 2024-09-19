@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:50:23 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/08 16:55:50 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 11:26:29 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void MateriaSource::learnMateria(AMateria* m) {
 		std::cout << "Too many spells to learn another.\n";
 		return ;
 	}
-	if (m == nullptr) {
+	if (!m) {
 		std::cout << "Can't learn a null spell.\n";
 		return ;
 	}

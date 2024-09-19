@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:24:55 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/06 13:17:52 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 11:35:36 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Cat : public virtual A_Animal
 		Cat(const Cat& other);
 		Cat& operator=(const Cat& other);
 		~Cat();
-		void makeSound() const override;
+		void makeSound() const;
 		std::string getIdea(int idx) const;
 };
 

@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:02:46 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/04 17:05:28 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 11:37:57 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ WrongAnimal::WrongAnimal(void) {
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& other) {
+	_type = other._type;
 	std::cout << "WrongAnimal copy constructor called.\n";
 }
 

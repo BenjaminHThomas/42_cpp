@@ -6,20 +6,19 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 15:18:08 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/11 12:54:37 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 11:27:52 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 
-AMateria::AMateria(void) {
-	_equipedStatus = false;
+AMateria::AMateria(void) : _equipedStatus(false) {
 }
 
-AMateria::AMateria(std::string const& type) : _type(type) {
+AMateria::AMateria(std::string const& type) : _type(type), _equipedStatus(false) {
 }
 
-AMateria::AMateria(AMateria const& src) : _type(src._type) {
+AMateria::AMateria(AMateria const& src) : _type(src._type), _equipedStatus(false) {
 }
 
 AMateria & AMateria::operator=(AMateria const& rhs) {
