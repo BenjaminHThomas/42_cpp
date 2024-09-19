@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:24:12 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/19 13:10:35 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 19:37:18 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ int main() {
 	// notAllowed->makeSound();
 
 	Cat* allowed = new Cat();
-	Cat cat2;
+	Cat stackCat;
 
-	cat2 = *allowed;
 	std::cout << "\n";
 	allowed->makeSound();
-	cat2.makeSound();
 	std::cout << allowed->getIdea(0) << std::endl;
 	std::cout << "\n";
+	stackCat.makeSound();
+	std::cout << stackCat.getIdea(10) << "\n\n";
 	delete allowed;
 	return 0;
 }

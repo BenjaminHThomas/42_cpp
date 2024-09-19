@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:24:55 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/04 16:01:13 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 19:10:48 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ class Cat : public Animal
 		Cat& operator=(const Cat& other);
 		~Cat();
 		void makeSound() const;
-		std::string getType() const;
 };
 

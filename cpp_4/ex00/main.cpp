@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:24:12 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/19 13:05:04 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 19:26:07 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main() {
 	const Animal* meta = new Animal();
 	const Animal* garfield = new Cat();
 	const Animal* baxter = new Dog();
-	const WrongAnimal* wrongMeta = new WrongAnimal();
+	const WrongAnimal* wrongMeta = new WrongCat();
 	const WrongCat* evilGarfield = new WrongCat();
 
 	std::cout << "\n";

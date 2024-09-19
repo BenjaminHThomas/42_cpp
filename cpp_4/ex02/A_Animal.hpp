@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:19:38 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/06 13:27:17 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 19:30:52 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class A_Animal
 		A_Animal(const A_Animal& other);
 		A_Animal& operator=(const A_Animal& other);
 		virtual ~A_Animal();
-		virtual void makeSound() const;
+		virtual void makeSound() const = 0;
 		std::string getType() const;
 		virtual std::string getIdea(int idx) const = 0;
 };

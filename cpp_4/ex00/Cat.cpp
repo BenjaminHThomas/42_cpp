@@ -6,14 +6,13 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:26:46 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/19 13:05:30 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 19:24:23 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat(void) : Animal("Cat_Animal") {
-	_type = "Cat";
+Cat::Cat(void) : Animal("Cat") {
 	std::cout << "Cat default constructor called.\n";
 }
 
@@ -23,9 +22,7 @@ Cat::Cat(const Cat& other) : Animal(other) {
 
 Cat& Cat::operator=(const Cat& other) {
 	std::cout << "Cat copy assignment operator called.\n";
-	if (this != &other) {
-		Animal::operator=(other);
-	}
+	(void)other;
 	return *this;
 }
 
@@ -35,8 +32,4 @@ Cat::~Cat() {
 
 void Cat::makeSound() const {
 	std::cout << _type << ": Meow!\n";
-}
-
-std::string Cat::getType() const {
-	return _type;
 }

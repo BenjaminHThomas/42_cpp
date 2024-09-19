@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:24:12 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/19 11:14:12 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 19:39:21 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include "Ice.hpp"
 #include "MateriaSource.hpp"
 #include "IMateriaSource.hpp"
-
-// add check if materia is equiped twice
 
 int main()
 {

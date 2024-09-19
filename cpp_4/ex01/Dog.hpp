@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:30:35 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/06 12:48:08 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 19:28:13 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ class Dog : public Animal
 		Brain* _brain;
 	public:
 		Dog(void);
-		Dog(std::string type);
 		Dog(const Dog& other);
 		Dog& operator=(const Dog& other);
 		~Dog();
 		void makeSound() const;
-		std::string getType() const;
 };
 

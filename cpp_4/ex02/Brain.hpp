@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 17:16:20 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/04 17:59:05 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 19:18:46 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 class Brain
 {
 	protected:
-		std::string *_ideas;
+		std::string _ideas[100];
 	public:
 		Brain(void);
 		Brain(Brain& other);
 		Brain& operator=(const Brain& other);
+		std::string getIdea(int idx) const;
 		~Brain();
-		std::string* getIdeas() const;
 };
 

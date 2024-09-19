@@ -36,10 +36,6 @@ A_Animal::~A_Animal() {
 	std::cout << "A_Animal destructor called.\n";
 }
 
-void A_Animal::makeSound() const {
-	std::cout << _type << ": A_Animal sound!\n";
-}
-
 std::string A_Animal::getType() const {
 	return _type;
 }

@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:26:46 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/06 13:24:00 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 19:33:56 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Cat::Cat(void) : A_Animal("Cat") {
 	std::cout << "Cat default constructor called.\n";
-	_brain = new Brain;
+	_brain = new Brain();
 }
 
 Cat::Cat(const Cat& other) : A_Animal(other) {
@@ -25,9 +25,7 @@ Cat::Cat(const Cat& other) : A_Animal(other) {
 Cat& Cat::operator=(const Cat& other) {
 	std::cout << "Cat copy assignment operator called.\n";
 	if (this != &other) {
-		_type = other._type;
-		delete _brain;
-		_brain = new Brain(*other._brain);
+		_brain = other._brain;
 	}
 	return *this;
 }
@@ -42,8 +40,5 @@ void Cat::makeSound() const {
 }
 
 std::string  Cat::getIdea(int idx) const {
-	if (idx < 0 || idx >= 100) {
-		return NULL;
-	}
-	return _brain->getIdeas()[idx];
+	return _brain->getIdea(idx);
 }
