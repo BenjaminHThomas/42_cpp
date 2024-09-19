@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:04:53 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/18 10:44:02 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 11:45:41 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void ShrubberyCreationForm::execute(const Bureaucrat& b) {
 	std::string line;
 	std::string f1 = "tree1.txt";
 	std::string f2 = "tree2.txt";
-	std::ifstream infile1(f1);
-	std::ifstream infile2(f2);
+	std::ifstream infile1(f1.c_str());
+	std::ifstream infile2(f2.c_str());
 	if (!infile1 || !infile2) {
 		std::cerr << "Error: cannot open tree art files.\n";
 		return ;
@@ -59,7 +59,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat& b) {
 	}
 	infile1.close();
 	infile2.close();
-	std::ofstream outFile(getTarget() + "_shrubbery");
+	std::ofstream outFile((getTarget() + "_shrubbery").c_str());
 	if (!outFile) {
 		std::cerr << "Error: file " << (getTarget() + "_shrubbery") << " cannot be created.\n";
 	} else {

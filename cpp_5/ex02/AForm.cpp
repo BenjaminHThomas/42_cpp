@@ -96,11 +96,11 @@ bool AForm::getStatus() const {
 	return _isSigned;
 }
 
-const int AForm::getGradeToSign() const {
+int AForm::getGradeToSign() const {
 	return _gradeToSign;
 }
 
-const int AForm::getGradeToExec() const {
+int AForm::getGradeToExec() const {
 	return _gradeToExec;
 }
 

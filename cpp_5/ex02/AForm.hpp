@@ -39,8 +39,8 @@ public:
 	const std::string getName() const;
 	const std::string getTarget() const;
 	bool getStatus() const;
-	const int getGradeToSign() const;
-	const int getGradeToExec() const;
+	int getGradeToSign() const;
+	int getGradeToExec() const;
 	class GradeTooHighException;
 	class GradeTooLowException;
 	class FormUnsignedException;

@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:23:40 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/18 10:25:18 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 11:42:35 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,11 @@ bool Form::getStatus() const {
 	return _isSigned;
 }
 
-const int Form::getGradeToSign() const {
+int Form::getGradeToSign() const {
 	return _gradeToSign;
 }
 
-const int Form::getGradeToExec() const {
+int Form::getGradeToExec() const {
 	return _gradeToExec;
 }
 

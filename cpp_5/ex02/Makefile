@@ -6,7 +6,7 @@
 #    By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/04 15:18:17 by bthomas           #+#    #+#              #
-#    Updated: 2024/09/17 18:28:52 by bthomas          ###   ########.fr        #
+#    Updated: 2024/09/19 11:41:31 by bthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,9 @@ SRC			= main.cpp \
 OBJS		= $(SRC:%.cpp=%.o)
 CFLAGS		= -Wall -Werror -Wextra -std=c++98
 COMPILER	= c++
+
+%.o : %.cpp
+	$(COMPILER) $(CFLAGS) -I. -c $< -o $@ 
 
 $(NAME): $(OBJS)
 	$(COMPILER) $(CFLAGS) -I. $(OBJS) -o $(NAME)

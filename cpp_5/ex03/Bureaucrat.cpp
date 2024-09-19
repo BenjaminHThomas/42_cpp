@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 17:25:36 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/18 11:55:28 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 11:48:02 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,6 @@ std::ostream& operator<<(std::ostream& o, const Bureaucrat& b) {
 }
 
 void Bureaucrat::signForm(AForm& f) {
-	if (&f == nullptr) {
-		return ;
-	}
 	try {
 		f.beSigned(*this);
 		std::cout << "[Bureaucrat] " << _name << " signed " << f.getName() << "\n";
@@ -106,9 +103,6 @@ void Bureaucrat::signForm(AForm& f) {
 }
 
 void Bureaucrat::executeForm(AForm& f) {
-	if (&f == nullptr) {
-		return ;
-	}
 	try {
 		f.execute(*this);
 		std::cout << "[Bureaucrat] " << _name << " executed " << f.getName() << "\n";

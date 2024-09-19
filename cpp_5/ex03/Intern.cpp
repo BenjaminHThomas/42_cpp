@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 10:51:03 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/18 12:22:44 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 11:53:54 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,15 @@ Intern & Intern::operator=(const Intern &intern)
 }
 
 class Intern::FormNotFoundException : public std::exception {
-	private:
-		std::string _errMsg;
 	public:
-		FormNotFoundException(const std::string& formName)
-			: _errMsg("Form: '" + formName + "' is not valid\n") {};
 		const char* what() const throw() {
-			return _errMsg.c_str();
+			return " form not found\n";
 		}
-};
+};;
 
 static std::string to_upper(const std::string& in) {
 	std::string newName;
-	for (int i = 0; i < in.size(); ++i) {
+	for (int i = 0; i < (int)in.size(); ++i) {
 		if (std::isalpha(in[i])) {
 			newName += std::toupper(in[i]);
 		}
@@ -68,6 +64,7 @@ AForm* Intern::makeForm(std::string formName, std::string target) {
 			}
 		}
 	}
-	throw FormNotFoundException(formName);
-	return nullptr;
+	std::cerr << "Error: " << formName;
+	throw FormNotFoundException();
+	return NULL;
 }

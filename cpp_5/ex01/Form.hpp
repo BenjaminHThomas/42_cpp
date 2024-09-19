@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:23:23 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/17 17:34:57 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/19 11:42:19 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ public:
 	Form & operator=(const Form &other);
 	const std::string getName() const;
 	bool getStatus() const;
-	const int getGradeToSign() const;
-	const int getGradeToExec() const;
+	int getGradeToSign() const;
+	int getGradeToExec() const;
 	class GradeTooHighException;
 	class GradeTooLowException;
 	void beSigned (const Bureaucrat& b);
