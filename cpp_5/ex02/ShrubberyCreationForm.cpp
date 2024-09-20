@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:04:53 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/19 11:45:41 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/20 11:23:59 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 ShrubberyCreationForm & ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 {
-	if (this != &other) {
-		setName(other.getName());
-		setTarget(other.getTarget());
-	}
+	(void)other;
 	std::cout << "[ShrubForm] assignment operator called\n";
 	return *this;
 }

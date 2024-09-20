@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:04:26 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/17 20:42:37 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/20 11:23:25 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm &other)
 {
-	if (this != &other) {
-		setName(other.getName());
-		setTarget(other.getTarget());
-	}
+	(void)other;
 	std::cout << "[RobotomyForm] assignment operator called\n";
 	return *this;
 }

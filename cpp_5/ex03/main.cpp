@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 13:16:24 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/18 12:12:19 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/20 10:50:38 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@ int main(void) {
 	try {
 		form = jim.makeForm("garbage", "bob's dad");
 		form->beSigned(bob);
+		delete form;
+	} catch (std::exception& e) {
+		std::cout << e.what();
+	}
+
+	try {
+		form = jim.makeForm("shrubbery creation", "bilbo");
+		bob.signForm(*form);
+		bob.executeForm(*form);
 		delete form;
 	} catch (std::exception& e) {
 		std::cout << e.what();

@@ -6,18 +6,11 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:23:40 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/19 11:42:35 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/20 11:19:29 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
-
-//static int clamp(int level) {
-//	if (level > 150 || level < 1) {
-//		return (150); 
-//	}
-//	return level;
-//}
 
 class Form::GradeTooHighException : public std::exception {
 	public:
@@ -57,9 +50,12 @@ Form::Form (std::string name, int gradeToSign, int gradeToExec) :
 	std::cout << "[Form] Form constructor called\n";
 }
 
-Form::Form(const Form &other)
+Form::Form(const Form &other) :  
+	_name(other._name), 
+	_isSigned(false),
+	_gradeToSign(other._gradeToSign),
+	_gradeToExec(other._gradeToExec)
 {
-	*this = other;
 	std::cout << "[Form] Form copy constructor called\n";
 }
 
@@ -70,13 +66,7 @@ Form::~Form()
 
 Form & Form::operator=(const Form &other)
 {
-	if (this != &other)
-	{
-		_name = other._name;
-		_gradeToSign = other._gradeToSign;
-		_gradeToExec = other._gradeToExec;
-		_isSigned = other._isSigned;
-	}
+	(void)other;
 	std::cout << "[Form] form copy operator called\n";
 	return *this;
 }

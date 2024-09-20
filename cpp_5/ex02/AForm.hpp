@@ -24,11 +24,11 @@ class Bureaucrat;
 class AForm
 {
 private:
-	std::string _name;
-	std::string _target;
+	const std::string _name;
+	const std::string _target;
 	bool _isSigned;
-	int _gradeToSign;
-	int _gradeToExec;
+	const int _gradeToSign;
+	const int _gradeToExec;
 protected:
 public:
 	AForm ();
@@ -47,8 +47,8 @@ public:
 	virtual void beSigned (const Bureaucrat& b);
 	virtual void execute (const Bureaucrat& b) = 0;
 	bool checkRequirement(const Bureaucrat& b) const;
-	void setName(std::string name);
-	void setTarget(std::string target);
+	//void setName(std::string name);
+	//void setTarget(std::string target);
 };
 
 std::ostream& operator<<(std::ostream& o, const AForm &f);

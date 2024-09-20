@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 17:24:53 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/17 17:54:00 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/20 10:38:21 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 class Bureaucrat
 {
 private:
-	std::string _name;
+	const std::string _name;
 	int	_grade;
 protected:
 public:

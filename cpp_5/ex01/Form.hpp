@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:23:23 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/19 11:42:19 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/20 11:12:54 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ class Bureaucrat;
 class Form
 {
 private:
-	std::string _name;
+	const std::string _name;
 	bool _isSigned;
-	int _gradeToSign;
-	int _gradeToExec;
+	const int _gradeToSign;
+	const int _gradeToExec;
 protected:
 public:
 	Form ();

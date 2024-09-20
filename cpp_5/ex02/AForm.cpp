@@ -59,7 +59,12 @@ AForm::AForm (std::string name, std::string target, int gradeToSign, int gradeTo
 	std::cout << "[AForm] AForm constructor called\n";
 }
 
-AForm::AForm(const AForm &other)
+AForm::AForm(const AForm &other) :
+	_name(other._name),
+	_target(other._target),
+	_isSigned(false),
+	_gradeToSign(other._gradeToSign),
+	_gradeToExec(other._gradeToExec)
 {
 	*this = other;
 	std::cout << "[AForm] AForm copy constructor called\n";
@@ -72,14 +77,7 @@ AForm::~AForm()
 
 AForm & AForm::operator=(const AForm &other)
 {
-	if (this != &other)
-	{
-		_name = other._name;
-		_target = other._target;
-		_gradeToSign = other._gradeToSign;
-		_gradeToExec = other._gradeToExec;
-		_isSigned = other._isSigned;
-	}
+	(void)other;
 	std::cout << "[AForm] AForm copy operator called\n";
 	return *this;
 }
@@ -132,10 +130,10 @@ bool AForm::checkRequirement(const Bureaucrat& b) const {
 	return true;
 }
 
-void AForm::setName(std::string name) {
-	_name = name;
-}
+// void AForm::setName(std::string name) {
+// 	_name = name;
+// }
 
-void AForm::setTarget(std::string target) {
-	_target = target;
-}
+// void AForm::setTarget(std::string target) {
+// 	_target = target;
+// }
