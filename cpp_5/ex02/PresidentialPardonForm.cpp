@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:02:40 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/20 11:19:03 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/20 11:50:12 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 PresidentialPardonForm & PresidentialPardonForm::operator=(const PresidentialPardonForm &other)
 {
-	if (this != &other) {
-		//setName(other.getName());
-		//setTarget(other.getTarget());
-	}
+	(void)other;
 	std::cout << "[PresPardonForm] assignment operator called\n";
 	return *this;
 }
