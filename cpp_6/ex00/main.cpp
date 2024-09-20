@@ -5,30 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 15:24:12 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/20 10:33:35 by bthomas          ###   ########.fr       */
+/*   Created: 2024/09/19 12:00:04 by bthomas           #+#    #+#             */
+/*   Updated: 2024/09/20 16:18:53 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
-#include "Dog.hpp"
-#include "WrongCat.hpp"
-
-#define NUM_ANIMALS 8
+#include "ScalarConverter.hpp"
 
 int main() {
-	// A_Animal* notAllowed = new A_Animal();
-	// notAllowed->makeSound();
+    char c = 0;
+    std::string cs;
 
-	Cat* allowed = new Cat();
-	Cat stackCat;
-
-	std::cout << "\n";
-	allowed->makeSound();
-	std::cout << allowed->getIdea(0) << std::endl;
-	std::cout << "\n";
-	stackCat.makeSound();
-	std::cout << stackCat.getIdea(10) << "\n\n";
-	delete allowed;
-	return 0;
+    cs += c;
+    ScalarConverter::convert("42.065f");
+    ScalarConverter::convert("-inf");
+    ScalarConverter::convert("-inff");
+    ScalarConverter::convert("z");
+    ScalarConverter::convert("2147483647");
+    ScalarConverter::convert("123AAAA");
+    ScalarConverter::convert(cs);
+    return 0;
 }
