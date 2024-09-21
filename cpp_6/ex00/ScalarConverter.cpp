@@ -6,11 +6,12 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:16:40 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/21 16:00:40 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/21 20:27:17 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+#include <cmath>
 
 ScalarConverter::ScalarConverter()
 {
@@ -82,11 +83,18 @@ bool ScalarConverter::isChar(std::string arg) {
 	return false;
 }
 
-void ScalarConverter::Double(std::string arg) {
-	if (arg == "-inf" || arg == "+inf" || arg == "nan") {
+bool ScalarConverter::isDouble(std::string arg) {
+	double	result;
+	if (arg == "-inf" || arg == "+inf" || arg == "nan" ||
+		arg == "-inff" || arg == "+inff") {
 		outputLiteral(arg);
-		return ;
+		return true;
 	}
+	if (std::istringstream(arg) >> result) {
+		outputNormal(result);
+		return true;
+	}
+	return false;
 }
 
 void ScalarConverter::convert(std::string arg) {
@@ -98,5 +106,7 @@ void ScalarConverter::convert(std::string arg) {
 	}
 	else if (isInt(arg))
 		return ;
-	Double(arg);
+	else if (isDouble(arg))
+		return ;
+	outputInvalid();
 }

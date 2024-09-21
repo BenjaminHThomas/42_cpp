@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:16:33 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/21 16:00:30 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/21 20:09:05 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 #include <stdlib.h>
 #include <limits>
 #include <string>
-#include <stdexcept>
 #include <cfloat>
 
 class ScalarConverter
@@ -31,7 +30,7 @@ private:
 	ScalarConverter & operator=(const ScalarConverter &scalarconverter);
 	static bool isInt(std::string arg);
 	static bool isChar(std::string arg);
-	static void Double(std::string arg);
+	static bool isDouble(std::string arg);
 	static bool isInvalidNum(std::string arg);
 	template <typename T>
 	static void outputNormal(T val);
