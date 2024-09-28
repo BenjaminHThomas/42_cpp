@@ -6,10 +6,11 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 18:00:23 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/28 18:17:47 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/28 19:46:52 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include <iostream>
 
 template <typename T>
