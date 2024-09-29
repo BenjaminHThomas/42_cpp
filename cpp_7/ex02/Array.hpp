@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 13:46:59 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/29 14:45:21 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/29 14:49:54 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <exception>
 #include <stdint.h>
+#include <cstdlib>
 
 template <class T>
 class Array
