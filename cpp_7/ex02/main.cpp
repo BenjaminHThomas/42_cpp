@@ -6,12 +6,16 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 19:46:16 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/28 19:46:29 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/29 14:23:31 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 
 int main(void) {
+	Array<int> arr1(10);
+
+	std::cout << arr1.size() << "\n";
+
 	return 0;
 }
