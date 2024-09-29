@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 14:28:20 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/29 14:41:53 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/29 15:03:58 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,26 @@
 
 template <typename T>
 Array<T>::Array() :
+	_arr(new T[0]),
 	_size(0)
 {
-	_arr = new T[0];
+
+}
+
+template <typename T>
+Array<T>::Array(uint32_t size) :
+	_arr(new T[size]),
+	_size(size)
+{
+
 }
 
 template <typename T>
 Array<T>::Array(const Array<T> &other) :
+	_arr(new T[other._size]),
 	_size(other._size)
 {
-	_arr = new T[other.size];
-	for (uint32_t i = 0; i < other.size; ++i) {
+	for (uint32_t i = 0; i < other._size; ++i) {
 		_arr[i] = other._arr[i];
 	}
 }
@@ -56,7 +65,7 @@ uint32_t Array<T>::size() const {
 
 template <typename T>
 T& Array<T>::operator[](uint32_t index) {
-	if (index > _size) {
+	if (index >= _size) {
 		throw std::out_of_range("Error: index out of range\n");
 	}
 	return _arr[index];

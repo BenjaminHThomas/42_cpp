@@ -1,6 +1,27 @@
 #include <iostream>
 #include <Array.hpp>
 
+
+void tests(void) {
+    Array<std::string> strings(42);
+    for (uint32_t i = 0; i < strings.size(); ++i) {
+        strings[i] = "wow 42";
+    }
+    std::cout << "size: " << strings.size() << "\n";
+    for (uint32_t i = 0; i < strings.size(); ++i) {
+        std::cout << i << " " << strings[i] << "\n";
+    }
+    try {
+        strings[500] = "AAAAAAAAAA";
+    } catch (std::exception &e) {
+        std::cout << e.what();
+    }
+
+    Array<std::string> copy(strings);
+    std::cout << "copy size: " << copy.size() << "\n";
+    std::cout << copy[5] << "\n";
+}
+
 #define MAX_VAL 750
 int main(int, char**)
 {
@@ -49,5 +70,6 @@ int main(int, char**)
         numbers[i] = rand();
     }
     delete [] mirror;//
+    tests();
     return 0;
 }

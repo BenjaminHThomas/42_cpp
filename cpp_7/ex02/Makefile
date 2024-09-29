@@ -6,13 +6,13 @@
 #    By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/28 19:45:57 by bthomas           #+#    #+#              #
-#    Updated: 2024/09/28 19:46:07 by bthomas          ###   ########.fr        #
+#    Updated: 2024/09/29 14:47:10 by bthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= ex02
-SRC			= main.cpp \
-				Array.tpp
+SRC			= main.cpp
+TEMPLATES	= Array.tpp
 OBJS		= $(SRC:%.cpp=%.o)
 CFLAGS		= -Wall -Werror -Wextra -std=c++98
 COMPILER	= c++

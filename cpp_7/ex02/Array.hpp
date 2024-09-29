@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 13:46:59 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/29 14:49:54 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/29 15:03:01 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ template <class T>
 class Array
 {
 	public:
-		T _arr;
+		T *_arr;
 		uint32_t _size;
 
 	public:
@@ -37,5 +37,7 @@ class Array
 		~Array ();
 		Array & operator=(const Array &other);
 };
+
+#include "Array.tpp"
 
 #endif /* ARRAY_HPP */
