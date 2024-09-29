@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 13:46:59 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/29 14:41:09 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/09/29 14:45:21 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ class Array
 		Array (const Array &other);
 		~Array ();
 		Array & operator=(const Array &other);
-		T& operator[](uint32_t index);
 };
 
 #endif /* ARRAY_HPP */
