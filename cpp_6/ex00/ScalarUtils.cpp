@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:20:44 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/21 20:01:29 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/02 09:34:19 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void ScalarConverter::outputNormal(T val) {
 	double d = static_cast<double>(val);
 	std::cout << "Char:\t ";
 	if (isprint(c)) {
-		std::cout << c << "\n";
+		std::cout << "'" << c << "'\n";
 	} else {
 		std::cout << "unprintable\n";
 	}
@@ -33,7 +33,7 @@ void ScalarConverter::outputNormal(T val) {
 	{
 		std::cout << "Int:\t out of range\n"; 
 	} else {
-		std::cout << "Int:\t " << i << ".00\n";
+		std::cout << "Int:\t " << i << "\n";
 	}
 	std::cout << "Float:\t ";
 	if (d > std::numeric_limits<float>::max()) {
@@ -63,7 +63,7 @@ void ScalarConverter::outputLiteral(std::string val) {
 		std::cout << "Float:\t" << " +inff\n";
 		std::cout << "Double:\t" << " +inf\n";
 	} else {
-		std::cout << "Float:\t" << " impossible\n";
+		std::cout << "Float:\t" << " nanf\n";
 		std::cout << "Double:\t" << " nan\n";
 	}
 }
