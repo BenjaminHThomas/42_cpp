@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 13:46:59 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/29 15:03:01 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/03 13:32:28 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 template <class T>
 class Array
 {
-	public:
+	private:
 		T *_arr;
 		uint32_t _size;
 
