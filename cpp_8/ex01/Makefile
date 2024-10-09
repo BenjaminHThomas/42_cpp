@@ -5,13 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/10/02 09:50:46 by bthomas           #+#    #+#              #
-#    Updated: 2024/10/09 16:00:19 by bthomas          ###   ########.fr        #
+#    Created: 2024/10/03 13:38:43 by bthomas           #+#    #+#              #
+#    Updated: 2024/10/09 16:00:14 by bthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= ex00
-SRC			= main.cpp
+
+NAME		= ex01
+SRC			= main.cpp Span.cpp
 OBJS		= $(SRC:%.cpp=%.o)
 CFLAGS		= -Wall -Werror -Wextra -std=c++98
 COMPILER	= c++
