@@ -6,12 +6,12 @@
 #    By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/03 13:38:43 by bthomas           #+#    #+#              #
-#    Updated: 2024/10/09 18:06:42 by bthomas          ###   ########.fr        #
+#    Updated: 2024/10/10 11:14:20 by bthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME		= ex01
+NAME		= ex02
 SRC			= main.cpp
 OBJS		= $(SRC:%.cpp=%.o)
 CFLAGS		= -Wall -Werror -Wextra -std=c++98

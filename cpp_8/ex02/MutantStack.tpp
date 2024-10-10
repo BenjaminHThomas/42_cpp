@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 19:20:03 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/09 19:37:58 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/10 11:12:20 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,21 @@ size_t MutantStack<T>::size(void) {
 }
 
 template <typename T>
-typename std::deque<T>::iterator MutantStack<T>::begin() {
+typename MutantStack<T>::iterator MutantStack<T>::begin() {
 	return _container.begin();
 }
 
 template <typename T>
-typename std::deque<T>::iterator MutantStack<T>::end() {
+typename MutantStack<T>::iterator MutantStack<T>::end() {
+	return _container.end();
+}
+
+template <typename T>
+typename MutantStack<T>::const_iterator MutantStack<T>::begin() const {
+	return _container.begin();
+}
+
+template <typename T>
+typename MutantStack<T>::const_iterator MutantStack<T>::end() const {
 	return _container.end();
 }
