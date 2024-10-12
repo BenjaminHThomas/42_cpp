@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 12:40:40 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/12 14:34:00 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/12 14:45:10 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,9 @@ std::string BitcoinExchange::dateToString(const time_t time) const {
 		return "Invalid Date.\n";
 	}
 	char buffer[11];
-	strftime(buffer, sizeof(buffer), "%Y-%m-%d", tmTime);
+	if (strftime(buffer, sizeof(buffer), "%Y-%m-%d", tmTime) == 0) {
+		return "1898-11-29";
+	}
 	return buffer;
 }
 
@@ -185,6 +187,8 @@ void BitcoinExchange::printResults(const std::string & fname) {
 	std::getline(inFile, line); // skip column names
 	while (std::getline(inFile, line)) {
 		line = stripSpace(line);
+		if (line.empty())
+			continue ;
 		std::string::size_type delimPos = line.find('|');
 		std::string dateString = line.substr(0, delimPos);
 		if (delimPos == std::string::npos) {
