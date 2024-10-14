@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:06:52 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/14 15:33:11 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/14 15:40:19 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ RPN::RPN(std::string equation, bool verbose) :
 	if (equation.size() < 5) {
 		if (equation.size() == 1 && isdigit(equation[0])) {
 			_numList.push_back(equation[0] - '0');
+			return ;
 		} else {
 			throw std::runtime_error("Error: invalid input");
 		}
-		return ;
 	}
-	if (!isdigit(equation[2])) {
+	if (!isdigit(equation[2]) || equation[1] != ' ' || equation[3] != ' ') { // Sorry, this is ugly
 		throw std::runtime_error("Error: invalid input");
 	}
 	_numList.push_back(equation[0] - '0');
