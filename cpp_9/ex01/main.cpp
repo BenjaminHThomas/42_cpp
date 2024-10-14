@@ -6,11 +6,15 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:07:39 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/14 15:35:15 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/14 15:44:42 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
+
+/*
+	RPN performs Reverse Polish Notation for numbers between 0 & 9;
+*/
 
 int main(int ac, char **av) {
 	if (ac != 2) {
