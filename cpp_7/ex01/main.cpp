@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 18:39:00 by bthomas           #+#    #+#             */
-/*   Updated: 2024/09/28 19:43:25 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/14 10:57:02 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ void test_func1(int &n) {
 
 void test_func2(std::string& s) {
 	s += " 42";
+}
+
+void test_func3(const std::string &s) {
+	std::cout << s << " ";
 }
 
 int main(void){
@@ -34,5 +38,7 @@ int main(void){
 	for (int i = 0; i < 4; ++i) {
 		std::cout << arr2[i] << "\n";
 	}
+
+	iter(arr2, 4, test_func3);
 	return 0;
 }
