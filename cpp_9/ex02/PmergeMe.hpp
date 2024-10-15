@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:54:11 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/15 17:23:38 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/15 19:08:36 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,37 @@
 
 #include <iostream>
 #include <vector>
+#include <deque>
 #include <utility>
 #include <limits>
 #include <cstdlib>
+#include <sys/time.h>
 
 class PmergeMe
 {
 	private:
-		std::vector<std::pair<int, int> > _unsortedNums;
-		std::vector<int> _sortedNums;
-		std::vector<int> _jacobsthalNums;
+		std::vector<int> _sortedNumsVec;
+		std::vector<std::pair<int, int> > _unsortedNumsVec;
+		std::vector<int> _jacobsthalNumsVec;
 
 	private:
+		std::deque<int> _sortedNumsDeq;
+		std::deque<std::pair<int, int> > _unsortedNumsDeq;
+		std::deque<int> _jacobsthalNumsDeq;
+
+	private:
+		void printBefore(int ac, char **av);
 		void validateInput(int ac, char **av);
 		void generateJacobsthal(int n);
-		std::vector<int>::iterator binarySearch(int n, int low, int high);
-		void printVec();
+		template <typename T>
+		typename T::iterator binarySearch(int n, int low, int high, T & container);
+		template <typename T>
+		void printContainer(T & container);
+		template <typename T, typename F>
+		void sort(T & sorted, F & unsorted, T & jacobs);
 
 	public:
-		void sort();
+		void sortBoth();
 
 	public:
 		PmergeMe ();

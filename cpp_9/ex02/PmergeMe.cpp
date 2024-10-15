@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:54:28 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/15 17:39:20 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/15 19:13:45 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,20 @@ void PmergeMe::validateInput(int ac, char **av) {
 }
 
 void PmergeMe::generateJacobsthal(int n) {
-	_jacobsthalNums.push_back(0);
-	_jacobsthalNums.push_back(1);
-	while (_jacobsthalNums.back() < n) {
-		int next = _jacobsthalNums.back() + 2 * _jacobsthalNums.at(_jacobsthalNums.size() -2);
-		_jacobsthalNums.push_back(next);
+	_jacobsthalNumsVec.push_back(0);
+	_jacobsthalNumsVec.push_back(1);
+	while (_jacobsthalNumsVec.back() < n) {
+		int next = _jacobsthalNumsVec.back() + 2 * _jacobsthalNumsVec.at(_jacobsthalNumsVec.size() -2);
+		_jacobsthalNumsVec.push_back(next);
 	}
+}
+
+void PmergeMe::printBefore(int ac, char **av) {
+	std::cout << "Before: ";
+	for (int i = 1; i < ac; ++i) {
+		std::cout << av[i] << " ";
+	}
+	std::cout << "\n";
 }
 
 PmergeMe::PmergeMe (int ac, char **av) {
@@ -57,7 +65,7 @@ PmergeMe::PmergeMe (int ac, char **av) {
 			tempPair.first = static_cast<int>(num2);
 			tempPair.second = static_cast<int>(num1);
 		}
-		_unsortedNums.push_back(tempPair);
+		_unsortedNumsVec.push_back(tempPair);
 	}
 	if ((ac - 1) % 2 != 0) {
 		char *endptr;
@@ -65,16 +73,24 @@ PmergeMe::PmergeMe (int ac, char **av) {
 		if (*endptr != '\0' || last > __INT_MAX__) {
 			throw std::overflow_error("Error: value is greater than max int.\n");
 		}
-		_sortedNums.push_back(static_cast<int>(last));
+		_sortedNumsVec.push_back(static_cast<int>(last));
 	}
 	generateJacobsthal(ac - 1);
+	_sortedNumsDeq = std::deque<int>(_sortedNumsVec.begin(), _sortedNumsVec.end());
+	_unsortedNumsDeq = std::deque<std::pair<int, int> >(_unsortedNumsVec.begin(), _unsortedNumsVec.end());
+	_jacobsthalNumsDeq = std::deque<int>(_jacobsthalNumsVec.begin(), _jacobsthalNumsVec.end());
+	printBefore(ac, av);
 }
 
 PmergeMe::PmergeMe(const PmergeMe &other)
 {
-	_unsortedNums = other._unsortedNums;
-	_sortedNums = other._sortedNums;
-	_jacobsthalNums = other._jacobsthalNums;
+	_unsortedNumsVec = other._unsortedNumsVec;
+	_sortedNumsVec = other._sortedNumsVec;
+	_jacobsthalNumsVec = other._jacobsthalNumsVec;
+
+	_unsortedNumsDeq = other._unsortedNumsDeq;
+	_sortedNumsDeq = other._sortedNumsDeq;
+	_jacobsthalNumsDeq = other._jacobsthalNumsDeq;
 }
 
 PmergeMe::~PmergeMe()
@@ -86,69 +102,96 @@ PmergeMe & PmergeMe::operator=(const PmergeMe &other)
 {
 	if (this != &other)
 	{
-		_unsortedNums = other._unsortedNums;
-		_sortedNums = other._sortedNums;
-		_jacobsthalNums = other._jacobsthalNums;
+		_unsortedNumsVec = other._unsortedNumsVec;
+		_sortedNumsVec = other._sortedNumsVec;
+		_jacobsthalNumsVec = other._jacobsthalNumsVec;
+
+		_unsortedNumsDeq = other._unsortedNumsDeq;
+		_sortedNumsDeq = other._sortedNumsDeq;
+		_jacobsthalNumsDeq = other._jacobsthalNumsDeq;
 	}
 	return *this;
 }
 
-std::vector<int>::iterator PmergeMe::binarySearch(int n, int low, int high) {
-	if (_sortedNums.size() == 0)
-		return  _sortedNums.begin();
+template <typename T>
+typename T::iterator PmergeMe::binarySearch(int n, int low, int high, T & container) {
+	if (container.size() == 0)
+		return  container.begin();
 	if (high <= low) {
-		return (n > _sortedNums.at(low)) ?  _sortedNums.begin() + (low + 1) :  _sortedNums.begin() + low;
+		return (n > container.at(low)) ?  container.begin() + (low + 1) :  container.begin() + low;
 	}
 	int mid = (low + high) / 2;
-	if (n == _sortedNums.at(mid)) {
-		return  _sortedNums.begin() + mid + 1;
+	if (n == container.at(mid)) {
+		return  container.begin() + mid + 1;
 	}
-	if (n > _sortedNums.at(mid))
-		return binarySearch(n, mid + 1, high);
-	return binarySearch(n, low, mid - 1);
+	if (n > container.at(mid))
+		return binarySearch(n, mid + 1, high, container);
+	return binarySearch(n, low, mid - 1, container);
 }
 
-void PmergeMe::sort() {
+template <typename T, typename F>
+void PmergeMe::sort(T & sorted, F & unsorted, T & jacobs) {
 	// insert sorted large values
-	std::vector<std::pair<int, int> >::iterator it_uns;
-	for (it_uns = _unsortedNums.begin(); it_uns != _unsortedNums.end(); ++it_uns) {
-		std::vector<int>::iterator it_sort = binarySearch(it_uns->first, 0, _sortedNums.size() - 1);
-		_sortedNums.insert(it_sort, it_uns->first);
+	typename F::iterator it_uns;
+	for (it_uns = unsorted.begin(); it_uns != unsorted.end(); ++it_uns) {
+		typename T::iterator it_sort = binarySearch(it_uns->first, 0, sorted.size() - 1, sorted);
+		sorted.insert(it_sort, it_uns->first);
 	}
 
 	// insert smaller values
-	std::vector<bool> inserted(_unsortedNums.size(), false);
+	std::vector<bool> inserted(unsorted.size(), false);
 	// Insert first element if it exists
-	if (!_unsortedNums.empty()) {
-		std::vector<int>::iterator insertPos = binarySearch(_unsortedNums[0].second, 0, _sortedNums.size());
-		_sortedNums.insert(insertPos, _unsortedNums[0].second);
+	if (!unsorted.empty()) {
+		typename T::iterator insertPos = binarySearch(unsorted[0].second, 0, sorted.size(), sorted);
+		sorted.insert(insertPos, unsorted[0].second);
 		inserted[0] = true;
 	}
 
 	// Insert remaining elements according to Jacobsthal sequence
-	for (std::vector<int>::iterator it_jacob = _jacobsthalNums.begin() + 1; it_jacob != _jacobsthalNums.end(); ++it_jacob) {
+	for (typename T::iterator it_jacob = jacobs.begin() + 1; it_jacob != jacobs.end(); ++it_jacob) {
 		for (int i = *it_jacob - 1; i > *(it_jacob - 1) - 1; --i) {
-			if (i >= 0 && i < static_cast<int>(_unsortedNums.size()) && !inserted[i]) {
-				std::vector<int>::iterator insertPos = binarySearch(_unsortedNums[i].second, 0, _sortedNums.size());
-				_sortedNums.insert(insertPos, _unsortedNums[i].second);
+			if (i >= 0 && i < static_cast<int>(unsorted.size()) && !inserted[i]) {
+				typename T::iterator insertPos = binarySearch(unsorted[i].second, 0, sorted.size(), sorted);
+				sorted.insert(insertPos, unsorted[i].second);
 				inserted[i] = true;
 			}
 		}
 	}
 
 	// Insert remaining small values
-	for (size_t i = 0; i < _unsortedNums.size(); ++i) {
-		if (!inserted[i]) {
-			std::vector<int>::iterator insertPos = binarySearch(_unsortedNums[i].second, 0, _sortedNums.size());
-			_sortedNums.insert(insertPos, _unsortedNums[i].second);
+	for (size_t i = 0; i < unsorted.size(); ++i) {
+		if (!inserted.at(i)) {
+			typename T::iterator insertPos = binarySearch(unsorted[i].second, 0, sorted.size(), sorted);
+			sorted.insert(insertPos, unsorted[i].second);
 		}
 	}
-	printVec();
 }
 
-void PmergeMe::printVec() {
-	for (size_t i = 0; i < _sortedNums.size(); ++i) {
-		std::cout << _sortedNums[i] << " ";
+template <typename T>
+void PmergeMe::printContainer(T & container) {
+	for (size_t i = 0; i < container.size(); ++i) {
+		std::cout << container.at(i) << " ";
 	}
 	std::cout << std::endl;
+}
+
+void PmergeMe::sortBoth() {
+	struct timeval vecStart, vecEnd, deqStart, deqEnd;
+
+	gettimeofday(&vecStart, NULL);
+	sort(_sortedNumsVec, _unsortedNumsVec, _jacobsthalNumsVec);
+	gettimeofday(&vecEnd, NULL);
+
+	gettimeofday(&deqStart, NULL);
+	sort(_sortedNumsDeq, _unsortedNumsDeq, _jacobsthalNumsDeq);
+	gettimeofday(&deqEnd, NULL);
+
+	std::cout << "After: ";
+	printContainer(_sortedNumsVec);
+
+	long double vecDuration = (vecEnd.tv_sec - vecStart.tv_sec) * 1e6 + (vecEnd.tv_usec - vecStart.tv_usec);
+	long double deqDuration = (deqEnd.tv_sec - deqStart.tv_sec) * 1e6 + (deqEnd.tv_usec - deqStart.tv_usec);
+
+	std::cout << "Time to process a range of " << _sortedNumsVec.size() << " elements with std::vector: " << vecDuration << " us\n";
+	std::cout << "Time to process a range of " << _sortedNumsDeq.size() << " elements with std::deque: " << deqDuration << " us\n";
 }
