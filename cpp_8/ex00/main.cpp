@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 09:43:56 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/02 14:39:12 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/03 13:34:39 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,15 @@ int main(void) {
 		l.push_front(1);
 		try {
 			int n = easyfind(l, 4);
+			std::cout << n << "\n";
+		} catch (std::exception &e) {
+			std::cout << e.what();
+		}
+	}
+	{
+		std::string ex = "wow";
+		try {
+			int n = easyfind(ex, 4);
 			std::cout << n << "\n";
 		} catch (std::exception &e) {
 			std::cout << e.what();
