@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:54:43 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/15 19:05:06 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/17 13:06:30 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(int ac, char **av) {
 	}
 	try {
 		PmergeMe pm(ac, av);
-		pm.sortBoth();
+		pm.sort();
 	} catch (std::exception &e) {
 		std::cerr << e.what();
 	}

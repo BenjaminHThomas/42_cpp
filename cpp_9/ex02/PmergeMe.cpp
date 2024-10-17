@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 18:54:28 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/15 19:13:45 by bthomas          ###   ########.fr       */
+/*   Created: 2024/10/16 14:56:05 by bthomas           #+#    #+#             */
+/*   Updated: 2024/10/17 14:02:17 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,32 @@
 PmergeMe::PmergeMe()
 {
 	
+}
+
+PmergeMe::PmergeMe(int ac, char **av) {
+	parseInput(ac, av);
+}
+
+PmergeMe::PmergeMe(const PmergeMe &other) :
+	_unsortedV(other._unsortedV),
+	_unsortedD(other._unsortedD)
+{
+	
+}
+
+PmergeMe::~PmergeMe()
+{
+	
+}
+
+PmergeMe & PmergeMe::operator=(const PmergeMe &other)
+{
+	if (this != &other)
+	{
+		_unsortedD = other._unsortedD;
+		_unsortedV = other._unsortedV;
+	}
+	return *this;
 }
 
 void PmergeMe::validateInput(int ac, char **av) {
@@ -28,142 +54,25 @@ void PmergeMe::validateInput(int ac, char **av) {
 	}
 }
 
-void PmergeMe::generateJacobsthal(int n) {
-	_jacobsthalNumsVec.push_back(0);
-	_jacobsthalNumsVec.push_back(1);
-	while (_jacobsthalNumsVec.back() < n) {
-		int next = _jacobsthalNumsVec.back() + 2 * _jacobsthalNumsVec.at(_jacobsthalNumsVec.size() -2);
-		_jacobsthalNumsVec.push_back(next);
-	}
-}
-
-void PmergeMe::printBefore(int ac, char **av) {
-	std::cout << "Before: ";
-	for (int i = 1; i < ac; ++i) {
-		std::cout << av[i] << " ";
-	}
-	std::cout << "\n";
-}
-
-PmergeMe::PmergeMe (int ac, char **av) {
+void PmergeMe::parseInput(int ac, char **av) {
 	validateInput(ac, av);
-	for (int i = 1; i < ac - 1; i += 2) {
-		std::pair<int, int> tempPair;
+	for (int i = 1; i < ac; ++i) {
 		char *endptr;
-		long num1 = std::strtol(av[i], &endptr, 10);
-		if (*endptr != '\0' || num1 > __INT_MAX__) {
-			throw std::overflow_error("Error: value is greater than max int.\n");
+		long num = std::strtol(av[i], &endptr, 10);
+		if (*endptr != '\0' || num > __INT_MAX__) {
+			throw std::overflow_error("Error: value is greater than the max int.\n");
 		}
-		long num2 = std::strtol(av[i + 1], &endptr, 10);
-		if (*endptr != '\0' || num2 > __INT_MAX__) {
-			throw std::overflow_error("Error: value is greater than max int.\n");
-		}
-		if (num1 > num2) {
-			tempPair.first = static_cast<int>(num1);
-			tempPair.second = static_cast<int>(num2);
-		} else {
-			tempPair.first = static_cast<int>(num2);
-			tempPair.second = static_cast<int>(num1);
-		}
-		_unsortedNumsVec.push_back(tempPair);
+		_unsortedV.push_back(static_cast<int>(num));
+		_unsortedD.push_back(static_cast<int>(num));
 	}
-	if ((ac - 1) % 2 != 0) {
-		char *endptr;
-		long last = std::strtol(av[ac - 1], &endptr, 10);
-		if (*endptr != '\0' || last > __INT_MAX__) {
-			throw std::overflow_error("Error: value is greater than max int.\n");
-		}
-		_sortedNumsVec.push_back(static_cast<int>(last));
-	}
-	generateJacobsthal(ac - 1);
-	_sortedNumsDeq = std::deque<int>(_sortedNumsVec.begin(), _sortedNumsVec.end());
-	_unsortedNumsDeq = std::deque<std::pair<int, int> >(_unsortedNumsVec.begin(), _unsortedNumsVec.end());
-	_jacobsthalNumsDeq = std::deque<int>(_jacobsthalNumsVec.begin(), _jacobsthalNumsVec.end());
-	printBefore(ac, av);
 }
 
-PmergeMe::PmergeMe(const PmergeMe &other)
-{
-	_unsortedNumsVec = other._unsortedNumsVec;
-	_sortedNumsVec = other._sortedNumsVec;
-	_jacobsthalNumsVec = other._jacobsthalNumsVec;
-
-	_unsortedNumsDeq = other._unsortedNumsDeq;
-	_sortedNumsDeq = other._sortedNumsDeq;
-	_jacobsthalNumsDeq = other._jacobsthalNumsDeq;
-}
-
-PmergeMe::~PmergeMe()
-{
-	
-}
-
-PmergeMe & PmergeMe::operator=(const PmergeMe &other)
-{
-	if (this != &other)
-	{
-		_unsortedNumsVec = other._unsortedNumsVec;
-		_sortedNumsVec = other._sortedNumsVec;
-		_jacobsthalNumsVec = other._jacobsthalNumsVec;
-
-		_unsortedNumsDeq = other._unsortedNumsDeq;
-		_sortedNumsDeq = other._sortedNumsDeq;
-		_jacobsthalNumsDeq = other._jacobsthalNumsDeq;
-	}
-	return *this;
-}
-
-template <typename T>
-typename T::iterator PmergeMe::binarySearch(int n, int low, int high, T & container) {
-	if (container.size() == 0)
-		return  container.begin();
-	if (high <= low) {
-		return (n > container.at(low)) ?  container.begin() + (low + 1) :  container.begin() + low;
-	}
-	int mid = (low + high) / 2;
-	if (n == container.at(mid)) {
-		return  container.begin() + mid + 1;
-	}
-	if (n > container.at(mid))
-		return binarySearch(n, mid + 1, high, container);
-	return binarySearch(n, low, mid - 1, container);
-}
-
-template <typename T, typename F>
-void PmergeMe::sort(T & sorted, F & unsorted, T & jacobs) {
-	// insert sorted large values
-	typename F::iterator it_uns;
-	for (it_uns = unsorted.begin(); it_uns != unsorted.end(); ++it_uns) {
-		typename T::iterator it_sort = binarySearch(it_uns->first, 0, sorted.size() - 1, sorted);
-		sorted.insert(it_sort, it_uns->first);
-	}
-
-	// insert smaller values
-	std::vector<bool> inserted(unsorted.size(), false);
-	// Insert first element if it exists
-	if (!unsorted.empty()) {
-		typename T::iterator insertPos = binarySearch(unsorted[0].second, 0, sorted.size(), sorted);
-		sorted.insert(insertPos, unsorted[0].second);
-		inserted[0] = true;
-	}
-
-	// Insert remaining elements according to Jacobsthal sequence
-	for (typename T::iterator it_jacob = jacobs.begin() + 1; it_jacob != jacobs.end(); ++it_jacob) {
-		for (int i = *it_jacob - 1; i > *(it_jacob - 1) - 1; --i) {
-			if (i >= 0 && i < static_cast<int>(unsorted.size()) && !inserted[i]) {
-				typename T::iterator insertPos = binarySearch(unsorted[i].second, 0, sorted.size(), sorted);
-				sorted.insert(insertPos, unsorted[i].second);
-				inserted[i] = true;
-			}
-		}
-	}
-
-	// Insert remaining small values
-	for (size_t i = 0; i < unsorted.size(); ++i) {
-		if (!inserted.at(i)) {
-			typename T::iterator insertPos = binarySearch(unsorted[i].second, 0, sorted.size(), sorted);
-			sorted.insert(insertPos, unsorted[i].second);
-		}
+void PmergeMe::generateJacobsthal(int n) {
+	_jacobsNums.push_back(0);
+	_jacobsNums.push_back(1);
+	while (_jacobsNums.back() < n) {
+		int next = _jacobsNums.back() + 2 * _jacobsNums.at(_jacobsNums.size() -2);
+		_jacobsNums.push_back(next);
 	}
 }
 
@@ -175,23 +84,136 @@ void PmergeMe::printContainer(T & container) {
 	std::cout << std::endl;
 }
 
-void PmergeMe::sortBoth() {
+// takes either a vector or deque containing int pairs.
+template <typename T>
+void PmergeMe::mergeContainer(T &container, int left, int mid, int right) {
+	int i, j, k;
+	int n1 = mid - left + 1;
+	int n2 = right - mid;
+	T L(n1), R(n2);
+
+	for (i = 0; i < n1; ++i) {
+		L[i] = container[left + i];
+	}
+	for (j = 0; j < n2; ++j) {
+		R[j] = container[mid + 1 + j];
+	}
+
+	i = j = 0;
+	k = left;
+	while (i < n1 && j < n2) {
+		if (L[i].first <= R[j].first) {
+			container[k++] = L[i++];
+		} else {
+			container[k++] = R[j++];
+		}
+	}
+
+	while (i < n1) {
+		container[k++] = L[i++];
+	}
+	while (j < n2) {
+		container[k++] = R[j++];
+	}
+}
+
+template <typename T>
+void PmergeMe::mergeSortContainer(T & container, int left, int right) {
+	if (left < right) {
+		int mid = left + (right - left) / 2;
+		mergeSortContainer(container, left, mid);
+		mergeSortContainer(container, mid + 1, right);
+		mergeContainer(container, left, mid, right);
+	}
+}
+
+template <typename T>
+void PmergeMe::recursiveSortContainer(T & pairs) {
+	for (size_t i = 0; i < pairs.size(); ++i) {
+		if (pairs[i].first < pairs[i].second) {
+			std::swap(pairs[i].first, pairs[i].second);
+		}
+	}
+	mergeSortContainer(pairs, 0, pairs.size() - 1);
+}
+
+/*
+	T is either a vector<int> or deque<int>
+	F is either a vector<pair<int, int> > or deque equivalent.
+*/
+template <typename T, typename F>
+T PmergeMe::fjSort(T & unsorted, F & pairs) {
+	if (unsorted.size() == 1) {
+		return unsorted;
+	}
+	int straggler = -1;
+
+	// if odd, reserve last number to insert at the end;
+	if (unsorted.size() % 2 != 0) {
+		straggler = unsorted.back();
+		unsorted.pop_back();
+	}
+
+	for (size_t i = 0; i < unsorted.size(); i += 2) {
+		pairs.push_back(std::make_pair(unsorted[i], unsorted[i + 1]));
+	}
+
+	recursiveSortContainer(pairs);
+	T smallest;
+	T biggest;
+	for (size_t i = 0; i < pairs.size(); ++i) {
+		smallest.push_back(pairs[i].second);
+		biggest.push_back(pairs[i].first);
+		//std::cout << "Pair " << i << "(" << pairs[i].first << "," << pairs[i].second << ")\n";
+	}
+
+	T inserted(smallest.size(), 0);
+	if (smallest.size() >= 2) {
+		// insert first smallest
+		inserted[0] = 1;
+		biggest.insert(std::lower_bound(biggest.begin(), biggest.end(), smallest.front()), smallest.front());
+		// use the jacobsthal numbers to fill biggest with numbers from smallest
+		for (size_t i = 1; i < _jacobsNums.size() - 1; ++i) {
+			int start = _jacobsNums.at(i);
+			int end = std::min(static_cast<int>(smallest.size()), _jacobsNums.at(i + 1));
+			for (int j = end - 1; j >= start; --j) {
+				if (!inserted[j]) {
+					biggest.insert(std::lower_bound(biggest.begin(), biggest.end(), smallest.at(j)), smallest.at(j));
+					inserted[j] = 1;
+				}
+			}
+		}
+	} else {
+		biggest.insert(biggest.begin(), smallest.front());
+	}
+	if (straggler != -1) {
+		biggest.insert(std::lower_bound(biggest.begin(), biggest.end(), straggler), straggler);
+	}
+	return biggest;
+}
+
+void PmergeMe::sort() {
 	struct timeval vecStart, vecEnd, deqStart, deqEnd;
+	std::vector<std::pair<int, int> > pairsV;
+	std::deque<std::pair<int, int> > pairsD;
+	
+	generateJacobsthal(_unsortedD.size() / 2);
+	std::cout << "Before:\t";
+	printContainer(_unsortedV);
 
 	gettimeofday(&vecStart, NULL);
-	sort(_sortedNumsVec, _unsortedNumsVec, _jacobsthalNumsVec);
+	std::vector<int> _sortedV = fjSort(_unsortedV, pairsV);
 	gettimeofday(&vecEnd, NULL);
 
 	gettimeofday(&deqStart, NULL);
-	sort(_sortedNumsDeq, _unsortedNumsDeq, _jacobsthalNumsDeq);
+	std::deque<int> _sortedD = fjSort(_unsortedD, pairsD);
 	gettimeofday(&deqEnd, NULL);
 
-	std::cout << "After: ";
-	printContainer(_sortedNumsVec);
+	std::cout << "After:\t";
+	printContainer(_sortedD);
 
 	long double vecDuration = (vecEnd.tv_sec - vecStart.tv_sec) * 1e6 + (vecEnd.tv_usec - vecStart.tv_usec);
 	long double deqDuration = (deqEnd.tv_sec - deqStart.tv_sec) * 1e6 + (deqEnd.tv_usec - deqStart.tv_usec);
-
-	std::cout << "Time to process a range of " << _sortedNumsVec.size() << " elements with std::vector: " << vecDuration << " us\n";
-	std::cout << "Time to process a range of " << _sortedNumsDeq.size() << " elements with std::deque: " << deqDuration << " us\n";
+	std::cout << "Time to process a range of " << _sortedV.size() << " elements with std::vector:\t" << vecDuration << " us\n";
+	std::cout << "Time to process a range of " << _sortedD.size() << " elements with std::deque:\t" << deqDuration << " us\n";
 }

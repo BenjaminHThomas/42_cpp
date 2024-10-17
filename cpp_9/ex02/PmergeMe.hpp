@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 18:54:11 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/15 19:08:36 by bthomas          ###   ########.fr       */
+/*   Created: 2024/10/16 14:55:33 by bthomas           #+#    #+#             */
+/*   Updated: 2024/10/17 13:41:57 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,45 +15,44 @@
 # define PMERGEME_HPP
 
 #include <iostream>
+#include <string>
 #include <vector>
 #include <deque>
-#include <utility>
-#include <limits>
-#include <cstdlib>
+#include <algorithm>
 #include <sys/time.h>
+#include <cmath>
 
 class PmergeMe
 {
-	private:
-		std::vector<int> _sortedNumsVec;
-		std::vector<std::pair<int, int> > _unsortedNumsVec;
-		std::vector<int> _jacobsthalNumsVec;
+private:
+	std::vector<int> _jacobsNums;
+	std::vector<int> _unsortedV;
+	std::deque<int> _unsortedD;
 
-	private:
-		std::deque<int> _sortedNumsDeq;
-		std::deque<std::pair<int, int> > _unsortedNumsDeq;
-		std::deque<int> _jacobsthalNumsDeq;
+private:
+	template <typename T>
+	void printContainer(T & container);
+	template <typename T>
+	void recursiveSortContainer(T &container);
+	template <typename T>
+	void mergeSortContainer(T &container, int left, int right);
+	template <typename T>
+	void mergeContainer(T &container, int left, int mid, int right);
+	template <typename T, typename F>
+	T fjSort(T & unsorted, F & pairs);
 
-	private:
-		void printBefore(int ac, char **av);
-		void validateInput(int ac, char **av);
-		void generateJacobsthal(int n);
-		template <typename T>
-		typename T::iterator binarySearch(int n, int low, int high, T & container);
-		template <typename T>
-		void printContainer(T & container);
-		template <typename T, typename F>
-		void sort(T & sorted, F & unsorted, T & jacobs);
+private:
+	void parseInput(int ac, char **av);
+	void validateInput (int ac, char **av);
+	void generateJacobsthal(int n);
 
-	public:
-		void sortBoth();
-
-	public:
-		PmergeMe ();
-		PmergeMe (int ac, char **av);
-		PmergeMe (const PmergeMe &other);
-		~PmergeMe ();
-		PmergeMe & operator=(const PmergeMe &other);
+public:
+	void sort();
+	PmergeMe ();
+	PmergeMe (int ac, char **av);
+	PmergeMe (const PmergeMe &other);
+	~PmergeMe ();
+	PmergeMe & operator=(const PmergeMe &other);
 };
 
 #endif /* PMERGEME_HPP */
