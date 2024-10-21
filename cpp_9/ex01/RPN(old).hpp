@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 13:01:30 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/21 14:15:42 by bthomas          ###   ########.fr       */
+/*   Created: 2024/10/14 11:06:46 by bthomas           #+#    #+#             */
+/*   Updated: 2024/10/14 15:33:35 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,31 @@
 
 #include <iostream>
 #include <string>
-#include <algorithm>
-#include <stack>
-#include <sstream>
+#include <list>
 
 class RPN
 {
 	private:
-		std::stack<double> _numStack;
-		bool _verbose;
-		std::string _av1;
+		std::list<double> _numList;
+		std::list<char> _opList;
+		const std::string _validOps;
+		char _lastToken;
+		const bool _verbose;
 
 	private:
-		bool isOp(char c) const;
-		double doCalc(char op, double num1, double num2) const;
-		double strToDbl(std::string s) const;
-		
+		void processChar(char c);
+		double calculate(double num1, double num2, char op) const;
+
 	public:
-		void evalRPN(void);
-		RPN (std::string & av1, bool verbose = false);
+		void execute(void) const;
+		void debugPrint(void) const;
+
+	public:
 		RPN ();
-		RPN (const RPN &other);
-		RPN & operator=(const RPN &other);
+		RPN (std::string equation, bool verbose = false);
+		RPN (const RPN & other);
 		~RPN ();
+		RPN & operator=(const RPN & other);
 };
 
 #endif /* RPN_HPP */

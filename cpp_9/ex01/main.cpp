@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:07:39 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/14 15:44:42 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/21 14:19:08 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int main(int ac, char **av) {
 	}
 	try {
 		bool verbose = false;
-		RPN equation = RPN(av[1], verbose);
-		equation.debugPrint();
-		equation.execute();
+		std::string input = av[1];
+		RPN equation = RPN(input, verbose);
+		equation.evalRPN();
 	} catch (std::exception &e) {
-		std::cerr << e.what() << std::endl;
+		std::cerr << e.what();
 	}
 	return 0;
 }
