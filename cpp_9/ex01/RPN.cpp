@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:12:06 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/21 14:18:57 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/21 14:27:14 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ RPN::RPN(std::string & av1, bool verbose) :
 	_verbose(verbose),
 	_av1(av1)
 {
+	validateInput();
 }
 
 RPN::RPN() :
@@ -28,6 +29,7 @@ RPN::RPN(const RPN &other)
 	_numStack = other._numStack;
 	_verbose = other._verbose;
 	_av1 = other._av1;
+	validateInput();
 }
 
 RPN::~RPN()
@@ -43,7 +45,17 @@ RPN & RPN::operator=(const RPN &other)
 		_verbose = other._verbose;
 		_av1 = other._av1;
 	}
+	validateInput();
 	return *this;
+}
+
+void RPN::validateInput(void) const {
+	for (std::string::size_type i = 0; i < _av1.size(); ++i) {
+		if (isspace(_av1[i]))
+			continue ;
+		if (!isOp(_av1[i]) && !isdigit(_av1[i]))
+			throw std::runtime_error("Error: invalid input\n");
+	}
 }
 
 bool RPN::isOp(char c) const {
@@ -82,7 +94,7 @@ double RPN::doCalc(char op, double num1, double num2) const {
 			std::cout << num1 << " / " << num2 << "\n";
 		return num1 / num2;
 	default:
-		throw std::runtime_error("Error, invalid operation.\n");
+		throw std::runtime_error("Error: invalid operation.\n");
 	}
 }
 

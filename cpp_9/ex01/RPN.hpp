@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:01:30 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/21 14:15:42 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/21 14:24:52 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class RPN
 		bool isOp(char c) const;
 		double doCalc(char op, double num1, double num2) const;
 		double strToDbl(std::string s) const;
+		void validateInput(void) const;
 		
 	public:
 		void evalRPN(void);
