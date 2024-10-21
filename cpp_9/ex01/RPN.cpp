@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:12:06 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/21 14:27:14 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/21 14:28:53 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ RPN & RPN::operator=(const RPN &other)
 }
 
 void RPN::validateInput(void) const {
-	for (std::string::size_type i = 0; i < _av1.size(); ++i) {
+	for (size_t i = 0; i < _av1.size(); ++i) {
 		if (isspace(_av1[i]))
 			continue ;
 		if (!isOp(_av1[i]) && !isdigit(_av1[i]))
