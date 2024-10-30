@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 12:40:40 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/12 14:45:10 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/30 10:34:23 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,7 @@ void BitcoinExchange::printResults(const std::string & fname) {
 		}
 		std::string amtString = line.substr(delimPos + 1);
 		double amt = getPrice(line, '|');
-		if (amt < 0) {
+		if (amt < 0 || amt > 1000) {
 			std::cerr << "Error: invalid amount => " << amtString << "\n";
 			continue ;
 		}

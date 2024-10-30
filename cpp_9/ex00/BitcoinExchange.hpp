@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 12:40:32 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/12 14:09:25 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/14 10:58:27 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ class BitcoinExchange
 	public:
 		std::map<time_t, double> readCsv(const std::string & fname, char delim);
 		void printResults(const std::string & fname);
-		void convertResults(void);
 
 	public:
 		BitcoinExchange ();

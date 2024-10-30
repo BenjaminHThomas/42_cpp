@@ -16,3 +16,4 @@ hamburger cheeseburger bigmac | whopper
 2020-01-01 | 0
 2500-01-01 | 1
 2005-01-01   | 5
+2020-01-01 | 1000
