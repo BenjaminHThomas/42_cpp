@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 12:40:48 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/12 14:19:23 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/30 10:53:48 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int ac, char **av) {
 		BitcoinExchange btc;
 		btc.printResults(fname);
 	} catch (std::exception &e) {
-		e.what();
+		std::cout << e.what();
 	}
 	return 0;
 }

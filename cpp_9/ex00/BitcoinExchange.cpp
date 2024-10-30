@@ -6,7 +6,7 @@
 /*   By: bthomas <bthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 12:40:40 by bthomas           #+#    #+#             */
-/*   Updated: 2024/10/30 10:34:23 by bthomas          ###   ########.fr       */
+/*   Updated: 2024/10/30 10:56:04 by bthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,9 @@ std::map<time_t, double> BitcoinExchange::readCsv(const std::string & fname, cha
 		data.insert(entry);
 	}
 	inFile.close();
+	if (data.empty()) {
+		throw invalidInput();
+	}
 	return data;
 }
 
@@ -181,7 +184,7 @@ void BitcoinExchange::printResults(const std::string & fname) {
 	std::ifstream inFile;
 	inFile.open(fname.c_str());
 	if (!inFile.is_open()) {
-		throw std::runtime_error("Could not open file");
+		throw std::runtime_error("Error: Could not open file");
 	}
 	std::string line;
 	std::getline(inFile, line); // skip column names
